@@ -6,8 +6,18 @@ v2.0 raw
 # values below. Don't forget to add comments that describe the control signals
 # each opcode is configured to send.
 
+# Bit field documentation
+# 0:  Write enable for the register file
+# 1:  A invert for the ALU
+# 2:  B invert for the ALU
+# 3:  Carry in for the ALU
+# 4-6:  Operation for the ALU ()
+
 # Opcode 0: add
-0000
+# Bits  6-4 3 2 1 0
+#     0b000 0 0 0 1
+# = 0x0001
+0001
 
 # Opcode 1: sub
 0000
