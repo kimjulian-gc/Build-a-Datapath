@@ -1,0 +1,14 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: li $t0, 9           # Initialize $t0 with 10
+06010009 
+
+# 0x0004: subi $t1, $t0, 3     # $t1 = $t0 - 3 = 6
+17610003 
+
+# 0x0008: subi $t2, $t1, 2     # $t2 = $t1 - 2 = 4
+18710002 
+
+# 0x000c: subi $t3, $t2, 4     # $t3 = $t2 - 4 = 0
+19810004 
