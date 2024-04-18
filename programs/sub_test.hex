@@ -1,0 +1,14 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: li $s0, 20           # Load 20 into $s0
+0a010014 
+
+# 0x0004: li $s1, 10           # Load 10 into $s1
+0b01000a 
+
+# 0x0008: sub $s2, $s0, $s1    # $s2 = $s0 - $s1 = 10
+1ca0b000 
+
+# 0x000c: sub $s3, $s2, $s1    # $s3 = $s2 - $s1 = 0
+1dc0b000 

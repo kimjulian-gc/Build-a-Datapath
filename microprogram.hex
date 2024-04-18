@@ -20,7 +20,11 @@ v2.0 raw
 0001
 
 # Opcode 1: sub
-0000
+# Bits  6-4 3 2 1 0
+#     0b000 1 1 0 1
+# Explanation: Perform addition (ALUOp 0b000), B invert (1), Carry in (1), Write enable (1)
+# = 0x001D
+000D
 
 # Opcode 2: and
 0000

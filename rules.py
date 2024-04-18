@@ -17,3 +17,13 @@ def addi_instr(dest, op1, immediate):
 @assembler.instruction('li #, #', 1)
 def li_instr(dest, immediate):
   return addi_instr(dest, '$zero', immediate)
+
+# Encode a subi instruction
+@assembler.instruction('subi #, #, #', 1)
+def subi_instr(dest, op1, immediate):
+  return pips.iformat(opcode='sub', r0=dest, r1=op1, imm=immediate)
+  
+# Encode a sub instruction
+@assembler.instruction('sub #, #, #', 1)
+def sub_instr(dest, operand1, operand2):
+  return pips.rformat(opcode='sub', r0=dest, r1=operand1, r2=operand2)
