@@ -23,29 +23,57 @@ v2.0 raw
 # Bits  6-4 3 2 1 0
 #     0b000 1 1 0 1
 # Explanation: Perform addition (ALUOp 0b000), B invert (1), Carry in (1), Write enable (1)
-# = 0x001D
+# = 0x000D
 000D
 
 # Opcode 2: and
-0000
+# Bits  6-4 3 2 1 0
+#     0b001 0 0 0 1
+# Explanation: bitwise AND (ALUOp 0b001), Write enable (1)
+# = 0x0011
+0011
 
 # Opcode 3: or
-0000
+# Bits  6-4 3 2 1 0
+#     0b010 0 0 0 1
+# Explanation: bitwise OR (ALUOp 0b010), Write enable (1)
+# = 0x0021
+0021
 
 # Opcode 4: nand
-0000
+# Bits  6-4 3 2 1 0
+#     0b010 0 1 1 1
+# Explanation: bitwise OR (ALUOp 0b010), A invert (1), B invert (1), Write enable (1)
+# = 0x0027
+0027
 
 # Opcode 5: nor
-0000
+# Bits  6-4 3 2 1 0
+#     0b001 0 1 1 1
+# Explanation: bitwise AND (ALUOp 0b001), A invert (1), B invert (1), Write enable (1)
+# = 0x0017
+0017
 
 # Opcode 6: xor
-0000
+# Bits  6-4 3 2 1 0
+#     0b011 0 0 0 1
+# Explanation: bitwise XOR (ALUOp 0b011), Write enable (1)
+# = 0x0031
+0031
 
 # Opcode 7: slt
-0000
+# Bits  6-4 3 2 1 0
+#     0b100 0 0 0 1
+# Explanation: slt (ALUOp 0b100), Write enable (1)
+# = 0x0041
+0041
 
 # Opcode 8: sltu
-0000
+# Bits  6-4 3 2 1 0
+#     0b101 0 0 0 1
+# Explanation: sltu (ALUOp 0b101), Write enable (1)
+# = 0x0051
+0051
 
 # Opcode 9: lb
 0000

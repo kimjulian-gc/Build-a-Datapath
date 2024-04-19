@@ -1,0 +1,83 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0040: nop
+00010000 
+
+# 0x0044: and $t0, $zero, $zero # $t0 = 0 & 0 = 0
+26000000 
+
+# 0x0048: addi $t0, $t0, 1
+06610001 
+
+# 0x004c: and $t1, $zero, $t0 # $t1 = 0 & 1 = 0
+27006000 
+
+# 0x0050: and $t2, $t0, $zero # $t2 = 1 & 0 = 0
+28600000 
+
+# 0x0054: and $t3, $t0, $t0   # $t3 = 1 & 1 = 1
+29606000 
+
+# 0x0058: andi $s0, $zero, 0x0000 # $s0 = 0 & 0x0000 = 0
+2a010000 
+
+# 0x005c: andi $s1, $zero, 0xFFFF # $s1 = 0 & 0xFFFF = 0
+2b01ffff 
+
+# 0x0060: andi $s2, $t0, 0x0000   # $s2 = 1 & 0x0000 = 0
+2c610000 
+
+# 0x0064: andi $s3, $t0, 0xFFFF   # $s3 = 1 & 0xFFFF = 1
+2d61ffff 
+
+# 0x0068: or $t0, $zero, $zero           # $t0 = 0 | 0 = 0
+36000000 
+
+# 0x006c: or $t1, $zero, $t0             # $t1 = 0 | 0 = 0
+37006000 
+
+# 0x0070: addi $t0, $t0, 1
+06610001 
+
+# 0x0074: or $t2, $zero, $t0             # $t2 = 0 | 1 = 1
+38006000 
+
+# 0x0078: or $t3, $t0, $t0               # $t3 = 1 | 1 = 1
+39606000 
+
+# 0x007c: ori $s0, $zero, 0x0000 # $s0 = 0 | 0x0000 = 0
+3a010000 
+
+# 0x0080: ori $s1, $zero, 0xFFFF # $s1 = 0 | 0xFFFF = 0xFFFF
+3b01ffff 
+
+# 0x0084: ori $s2, $t0, 0x0000   # $s2 = 1 | 0x0000 = 1
+3c610000 
+
+# 0x0088: ori $s3, $t0, 0xFFFF   # $s3 = 1 | 0xFFFF = 0xFFFF
+3d61ffff 
+
+# 0x008c: nand $t0, $zero, $zero           # $t0 = ~(0 & 0) = 0xFFFFFFFF
+46000000 
+
+# 0x0090: nand $t1, $zero, $t0             # $t1 = ~(0 & 0xFFFFFFFF) = 0
+47006000 
+
+# 0x0094: nand $t2, $t0, $t0               # $t2 = ~(0xFFFFFFFF & 0xFFFFFFFF) = 0
+48606000 
+
+# 0x0098: nand $t3, $t0, $zero             # $t3 = ~(0xFFFFFFFF & 0) = 0
+49600000 
+
+# 0x009c: nandi $s0, $zero, 0x0000 # $s0 = ~(0 & 0x0000) = 0xFFFFFFFF
+4a010000 
+
+# 0x00a0: nandi $s1, $zero, 0xFFFF # $s1 = ~(0 & 0xFFFF) = 0xFFFFFFFF
+4b01ffff 
+
+# 0x00a4: nandi $s2, $t0, 0x0000   # $s2 = ~(0xFFFFFFFF & 0x0000) = 0x00000000
+4c610000 
+
+# 0x00a8: nandi $s3, $t0, 0xFFFF   # $s3 = ~(0xFFFFFFFF & 0xFFFF) = 0x0000FFFF
+4d61ffff 

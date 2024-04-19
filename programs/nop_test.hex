@@ -1,0 +1,20 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+00010000 
+
+# 0x0004: and $t0, $zero, $zero # $t0 = 0 & 0 = 0
+26000000 
+
+# 0x0008: addi $t0, $t0, 1
+06610001 
+
+# 0x000c: and $t1, $zero, $t0 # $t1 = 0 & 1 = 0
+27006000 
+
+# 0x0010: and $t2, $t0, $zero # $t2 = 1 & 0 = 0
+28600000 
+
+# 0x0014: and $t3, $t0, $t0   # $t3 = 1 & 1 = 1
+29606000 

@@ -1,0 +1,191 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+00010000 
+
+# 0x0004: and $t0, $zero, $zero # $t0 = 0 & 0 = 0
+26000000 
+
+# 0x0008: addi $t0, $t0, 1
+06610001 
+
+# 0x000c: and $t1, $zero, $t0 # $t1 = 0 & 1 = 0
+27006000 
+
+# 0x0010: and $t2, $t0, $zero # $t2 = 1 & 0 = 0
+28600000 
+
+# 0x0014: and $t3, $t0, $t0   # $t3 = 1 & 1 = 1
+29606000 
+
+# 0x0018: andi $s0, $zero, 0x0000 # $s0 = 0 & 0x0000 = 0
+2a010000 
+
+# 0x001c: andi $s1, $zero, 0xFFFF # $s1 = 0 & 0xFFFF = 0
+2b01ffff 
+
+# 0x0020: andi $s2, $t0, 0x0000   # $s2 = 1 & 0x0000 = 0
+2c610000 
+
+# 0x0024: andi $s3, $t0, 0xFFFF   # $s3 = 1 & 0xFFFF = 1
+2d61ffff 
+
+# 0x0028: or $t0, $zero, $zero           # $t0 = 0 | 0 = 0
+36000000 
+
+# 0x002c: or $t1, $zero, $t0             # $t1 = 0 | 0 = 0
+37006000 
+
+# 0x0030: addi $t0, $t0, 1
+06610001 
+
+# 0x0034: or $t2, $zero, $t0             # $t2 = 0 | 1 = 1
+38006000 
+
+# 0x0038: or $t3, $t0, $t0               # $t3 = 1 | 1 = 1
+39606000 
+
+# 0x003c: ori $s0, $zero, 0x0000 # $s0 = 0 | 0x0000 = 0
+3a010000 
+
+# 0x0040: ori $s1, $zero, 0xFFFF # $s1 = 0 | 0xFFFF = 0xFFFF
+3b01ffff 
+
+# 0x0044: ori $s2, $t0, 0x0000   # $s2 = 1 | 0x0000 = 1
+3c610000 
+
+# 0x0048: ori $s3, $t0, 0xFFFF   # $s3 = 1 | 0xFFFF = 0xFFFF
+3d61ffff 
+
+# 0x004c: nand $t0, $zero, $zero           # $t0 = ~(0 & 0) = 0xFFFF
+46000000 
+
+# 0x0050: nand $t1, $zero, $t0             # $t1 = ~(0 & 0xFFFF) = 0
+47006000 
+
+# 0x0054: nand $t2, $t0, $t0               # $t2 = ~(0xFFFF & 0xFFFF) = 0
+48606000 
+
+# 0x0058: nand $t3, $t0, $zero             # $t3 = ~(0xFFFF & 0) = 0
+49600000 
+
+# 0x005c: nandi $s0, $zero, 0x0000 # $s0 = ~(0 & 0x0000) = 0xFFFF
+4a010000 
+
+# 0x0060: nandi $s1, $zero, 0xFFFF # $s1 = ~(0 & 0xFFFF) = 0xFFFF
+4b01ffff 
+
+# 0x0064: nandi $s2, $t0, 0x0000 # $s2 = ~(0xFFFF & 0x0000) = 0x0000
+4c610000 
+
+# 0x0068: nandi $s3, $t0, 0xFFFF # $s3 = ~(0xFFFF & 0xFFFF) = 0x0000FFFF
+4d61ffff 
+
+# 0x006c: nor $t0, $zero, $zero # $t0 = ~(0 | 0) = 0xFFFF
+56000000 
+
+# 0x0070: nor $t1, $zero, $t0   # $t1 = ~(0 | 0xFFFF) = 0x0000
+57006000 
+
+# 0x0074: nor $t2, $t0, $zero   # $t2 = ~(0xFFFF | 0) = 0x0000
+58600000 
+
+# 0x0078: nor $t3, $t0, $t0     # $t3 = ~(0xFFFF | 0xFFFF) = 0x0000
+59606000 
+
+# 0x007c: nori $s0, $zero, 0x0000    # $s0 = ~(0 | 0x0000) = 0xFFFF
+5a010000 
+
+# 0x0080: nori $s1, $zero, 0xFFFF    # $s1 = ~(0 | 0xFFFF) = 0x0000
+5b01ffff 
+
+# 0x0084: nori $s2, $t0, 0x0000      # $s2 = ~(0xFFFF | 0x0000) = 0x0000
+5c610000 
+
+# 0x0088: nori $s3, $t0, 0xFFFF      # $s3 = ~(0xFFFF | 0xFFFF) = 0x0000
+5d61ffff 
+
+# 0x008c: xor $t0, $zero, $zero   # $t0 = 0 ^ 0 = 0
+66000000 
+
+# 0x0090: addi $t0, $zero, 1      # $t0 = 1
+06010001 
+
+# 0x0094: xor $t1, $zero, $t0     # $t1 = 0 ^ 1 = 1
+67006000 
+
+# 0x0098: xor $t2, $t0, $zero     # $t2 = 1 ^ 0 = 1
+68600000 
+
+# 0x009c: xor $t3, $t0, $t0       # $t3 = 1 ^ 1 = 0
+69606000 
+
+# 0x00a0: xori $s0, $zero, 0x0000          # $s0 = 0 ^ 0x0000 = 0
+6a010000 
+
+# 0x00a4: xori $s1, $zero, 0xFFFF          # $s1 = 0 ^ 0xFFFF = 0xFFFF
+6b01ffff 
+
+# 0x00a8: li   $t0, 0xFFFF                 # $t0 = 0xFFFF
+0601ffff 
+
+# 0x00ac: xori $s2, $t0, 0x0000            # $s2 = 0xFFFF ^ 0x0000 = 0xFFFF
+6c610000 
+
+# 0x00b0: xori $s3, $t0, 0xFFFF            # $s3 = 0xFFFF ^ 0xFFFF = 0xFFFF
+6d61ffff 
+
+# 0x00b4: slt $t0, $zero, $zero   # $t0 = 0 < 0 = 0
+76000000 
+
+# 0x00b8: slt $t1, $zero, $t0     # $t1 = 0 < 0 = 0
+77006000 
+
+# 0x00bc: slt $t2, $t0, $zero     # $t2 = 0 < 0 = 0
+78600000 
+
+# 0x00c0: li  $t0, 1
+06010001 
+
+# 0x00c4: slt $t3, $zero, $t0       # $t3 = 0 < 1 = 1
+79006000 
+
+# 0x00c8: slti $s0, $t0, 0     # $s0 = 1 < 0 = 0
+7a610000 
+
+# 0x00cc: slti $s1, $t0, 1     # $s1 = 1 < 1 = 0
+7b610001 
+
+# 0x00d0: slti $s2, $t0, -1    # $s2 = 1 < -1 = 0
+7c61ffff 
+
+# 0x00d4: slti $s3, $t0, 2     # $s3 = 1 < 2 = 1
+7d610002 
+
+# 0x00d8: sltu $t0, $zero, $zero    # $t0 = 0 < 0 = 0
+86000000 
+
+# 0x00dc: sltu $t1, $zero, $t0      # $t1 = 0 < 0 = 0
+87006000 
+
+# 0x00e0: li   $t0, 1
+06010001 
+
+# 0x00e4: sltu $t2, $t0, $zero      # $t2 = 1 < 0 = 0
+88600000 
+
+# 0x00e8: sltu $t3, $zero, $t0      # $t3 = 0 < 1 = 1
+89006000 
+
+# 0x00ec: sltiu $s0, $t0, 0     # $s0 = 1 < 0 = 0
+8a610000 
+
+# 0x00f0: sltiu $s1, $t0, 1     # $s1 = 1 < 1 = 0
+8b610001 
+
+# 0x00f4: sltiu $s2, $t0, -1    # $s2 = 1 < -1 = 0
+8c61ffff 
+
+# 0x00f8: sltiu $s3, $t0, 2     # $s3 = 1 < 2 = 1
+8d610002 
