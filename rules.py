@@ -102,3 +102,18 @@ def sltu_instr(dest, operand1, operand2):
 @assembler.instruction('sltiu #, #, #', 1)
 def sltui_instr(dest, operand1, immediate):
   return pips.iformat(opcode='sltu', r0=dest, r1=operand1, imm=immediate)
+
+# Encode a j instruction
+@assembler.instruction('j #', 1)
+def j_instr(immediate):
+  return pips.iformat(opcode='j', r0='$zero', r1='$zero', imm=immediate)
+
+# Encode a jal instruction
+@assembler.instruction('jal #', 1)
+def jal_instr(immediate):
+  return pips.iformat(opcode='j', r0='$ra', r1='$zero', imm=immediate, link=True)
+
+# Encode a jr instruction
+@assembler.instruction('jr #', 1)
+def jr_instr(dest):
+  return pips.rformat(opcode='j', r0='$zero', r1='$zero', r2=dest)

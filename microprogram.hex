@@ -12,65 +12,66 @@ v2.0 raw
 # 2:  B invert for the ALU
 # 3:  Carry in for the ALU
 # 4-6:  Operation for the ALU ()
+# 7:  Jump instruction indication
 
 # Opcode 0: add
-# Bits  6-4 3 2 1 0
-#     0b000 0 0 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 000 0 0 0 1
 # = 0x0001
 0001
 
 # Opcode 1: sub
-# Bits  6-4 3 2 1 0
-#     0b000 1 1 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 000 1 1 0 1
 # Explanation: Perform addition (ALUOp 0b000), B invert (1), Carry in (1), Write enable (1)
 # = 0x000D
 000D
 
 # Opcode 2: and
-# Bits  6-4 3 2 1 0
-#     0b001 0 0 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 001 0 0 0 1
 # Explanation: bitwise AND (ALUOp 0b001), Write enable (1)
 # = 0x0011
 0011
 
 # Opcode 3: or
-# Bits  6-4 3 2 1 0
-#     0b010 0 0 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 010 0 0 0 1
 # Explanation: bitwise OR (ALUOp 0b010), Write enable (1)
 # = 0x0021
 0021
 
 # Opcode 4: nand
-# Bits  6-4 3 2 1 0
-#     0b010 0 1 1 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 010 0 1 1 1
 # Explanation: bitwise OR (ALUOp 0b010), A invert (1), B invert (1), Write enable (1)
 # = 0x0027
 0027
 
 # Opcode 5: nor
-# Bits  6-4 3 2 1 0
-#     0b001 0 1 1 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 001 0 1 1 1
 # Explanation: bitwise AND (ALUOp 0b001), A invert (1), B invert (1), Write enable (1)
 # = 0x0017
 0017
 
 # Opcode 6: xor
-# Bits  6-4 3 2 1 0
-#     0b011 0 0 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 011 0 0 0 1
 # Explanation: bitwise XOR (ALUOp 0b011), Write enable (1)
 # = 0x0031
 0031
 
 # Opcode 7: slt
-# Bits  6-4 3 2 1 0
-#     0b100 0 0 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 100 0 0 0 1
 # Explanation: slt (ALUOp 0b100), Write enable (1)
 # = 0x0041
 0041
 
 # Opcode 8: sltu
-# Bits  6-4 3 2 1 0
-#     0b101 0 0 0 1
+# Bits  7 6-4 3 2 1 0
+#     0b0 101 0 0 0 1
 # Explanation: sltu (ALUOp 0b101), Write enable (1)
 # = 0x0051
 0051
@@ -94,4 +95,7 @@ v2.0 raw
 0000
 
 # Opcode 15: j
-0000
+# Bits  7 6-4 3 2 1 0
+#     0b1 000 0 0 0 1
+# = 0x0080
+0081

@@ -1,0 +1,26 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: li $t0, 0
+06010000 
+
+# 0x0004: li $t1, 0
+07010000 
+
+# 0x0008: j test_loop
+f0010014 
+
+# 0x000c: addi $t1, $t1, 1
+07710001 
+
+# 0x0010: jr $ra
+f000f000 
+
+# 0x0014: addi $t0, $t0, 1
+06610001 
+
+# 0x0018: jal test_func
+ff03000c 
+
+# 0x001c: j test_loop
+f0010014 
