@@ -1,0 +1,32 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: addi $t0, $zero, 5       # $t0 = 5
+06010005 
+
+# 0x0004: addi $t1, $zero, 7       # $t1 = 7
+07010007 
+
+# 0x0008: beq $t0, $t1, equal      # If $t0 == $t1, jump to equal
+d671001c 
+
+# 0x000c: addi $t2, $zero, 1       # $t2 = 1 (should not execute if beq is taken)
+08010001 
+
+# 0x0010: bne $t0, $t1, not_equal  # If $t0 != $t1, jump to not_equal
+e6710020 
+
+# 0x0014: addi $t3, $zero, 2       # $t3 = 2 (should execute if bne is taken)
+09010002 
+
+# 0x0018: j end                    # Jump to the end
+f0010024 
+
+# 0x001c: addi $t2, $zero, 0       # $t2 = 0
+08010000 
+
+# 0x0020: addi $t3, $zero, 3       # $t3 = 3
+09010003 
+
+# 0x0024: nop                       # Do nothing, end of program
+00010000 
