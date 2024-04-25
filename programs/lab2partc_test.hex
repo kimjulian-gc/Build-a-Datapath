@@ -1,0 +1,26 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: li $sp, 0xf800
+0e01f800 
+
+# 0x0004: li $t0, 42         # Load immediate value 42 into $t0
+0601002a 
+
+# 0x0008: sw $t0, 4($zero) # Store $t0 at memory address 4
+c6010004 
+
+# 0x000c: lw $t1, 4($zero) # Load value from memory address 4 into $t1
+a7010004 
+
+# 0x0010: lb $t2, 8($zero) # Load byte from memory address 8 into $t2
+98010008 
+
+# 0x0014: li $t3, 75         # Load immediate value 75 into $t3
+0901004b 
+
+# 0x0018: sb $t3, 8($zero) # Store the byte value at memory address 8
+b9010008 
+
+# 0x001c: lb $s0, 8($zero) # Load byte from memory address 8 into $t4
+9a010008 

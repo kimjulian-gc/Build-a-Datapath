@@ -77,22 +77,44 @@ v2.0 raw
 0051
 
 # Opcode 9: lb
+# Bits  7 6-4 3 2 1 0
+#     0b0 000 0 0 0 0
+# Explanation: Enable write for memory (0), Byte access (0), ALU result for register file (1)
+# = 0x0000
 0000
 
 # Opcode 10: lw
+# Bits  7 6-4 3 2 1 0
+#     0b0 000 0 0 0 1
+# Explanation: Enable write for memory (0), Word access (1), ALU result for register file (1)
+# = 0x0000
 0000
 
 # Opcode 11: sb
+# Bits  7 6-4 3 2 1 0
+#     0b0 000 0 0 0 0
+# Explanation: Enable write for memory (1), Byte access (0), ALU result for register file (0)
+# = 0x0000
 0000
 
 # Opcode 12: sw
+# Bits  7 6-4 3 2 1 0
+#     0b0 000 0 0 0 1
+# Explanation: Enable write for memory (1), Word access (1), ALU result for register file (0)
+# = 0x0000
 0000
 
 # Opcode 13: beq
-0000
+# Bits  7 6-4 3 2 1 0
+#     0b0 110 0 0 0 1
+# = 0x0061
+0061
 
 # Opcode 14: bne
-0000
+# Bits  7 6-4 3 2 1 0
+#     0b0 110 1 0 0 1
+# = 0x0069
+0069
 
 # Opcode 15: j
 # Bits  7 6-4 3 2 1 0
