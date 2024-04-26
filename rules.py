@@ -137,3 +137,13 @@ def lw_instr(reg1, imm, reg2):
 @assembler.instruction('sw #, #(#)', 1)
 def sw_instr(reg1, imm, reg2):
   return pips.iformat(opcode='sw', r0=reg1, r1=reg2, imm=imm)
+
+# Encode a lb instruction
+@assembler.instruction('lb #, #(#)', 1)
+def lb_instr(reg1, imm, reg2):
+  return pips.iformat(opcode='lb', r0=reg1, r1=reg2, imm=imm)
+
+# Encode a sb instruction
+@assembler.instruction('sb #, #(#)', 1)
+def sb_instr(reg1, imm, reg2):
+  return pips.iformat(opcode='sb', r0=reg1, r1=reg2, imm=imm)
