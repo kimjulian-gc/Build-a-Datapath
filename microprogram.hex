@@ -105,16 +105,21 @@ v2.0 raw
 0000
 
 # Opcode 13: beq
+# Perform subtraction, check if result is zero, branch if zero
 # Bits  7 6-4 3 2 1 0
-#     0b0 110 0 0 0 1
-# = 0x0061
-0061
+#     0b1 110 0 0 0 1
+# Explanation: ALU performs subtraction, check zero flag, branch if zero
+# = 0x00E1
+00E1
 
 # Opcode 14: bne
+# Perform subtraction, check if result is zero, branch if not zero
 # Bits  7 6-4 3 2 1 0
-#     0b0 110 1 0 0 1
-# = 0x0069
-0069
+#     0b1 110 1 0 0 1
+# Explanation: ALU performs subtraction, check zero flag, branch if not zero (zero flag inverted)
+# = 0x00E9
+00E9
+
 
 # Opcode 15: j
 # Bits  7 6-4 3 2 1 0
