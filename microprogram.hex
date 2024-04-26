@@ -7,15 +7,19 @@ v2.0 raw
 # each opcode is configured to send.
 
 # Bit field documentation
-# 0:  Write enable for the register file
-# 1:  A invert for the ALU
-# 2:  B invert for the ALU
-# 3:  Carry in for the ALU
-# 4-6:  Operation for the ALU ()
-# 7:  Jump instruction indication
-# 8:  Branch instruction indication
-# 9:  Branch Invert Control
-# 10: Use r0 instead of r2 as the second register file 
+# 0:   Write enable for the register file
+# 1:   A invert for the ALU
+# 2:   B invert for the ALU
+# 3:   Carry in for the ALU
+# 4-6: Operation for the ALU ()
+# 7:   Jump instruction indication
+# 8:   Branch instruction indication
+# 9:   Branch Invert Control
+# 10:  Use r0 instead of r2 as the second register file 
+# 11:  Write enable for Memory
+# 12:  (0) Byte or (1) Word
+# 13:  Write data from ALU result (0) or Rd (1)
+# 14:  ALU Dst
 
 # Opcode 0: add
 # Bits  7 6-4 3 2 1 0
@@ -80,28 +84,40 @@ v2.0 raw
 0051
 
 # Opcode 9: lb
-0000
+# Bits  E D C B A 9 8 7 6-4 3 2 1 0
+#     0b0 1 0 0 0 0 0 0 000 0 0 0 1 (store from Rd, byte, add, write enable)
+# = 0x2001
+2001
 
 # Opcode 10: lw
-0000
+# Bits  E D C B A 9 8 7 6-4 3 2 1 0
+#     0b0 1 1 0 0 0 0 0 000 0 0 0 1 (store from Rd, word, add, write enable)
+# = 0x3001
+3001
 
 # Opcode 11: sb
-0000
+# Bits  E D C B A 9 8 7 6-4 3 2 1 0
+#     0b0 1 0 1 1 0 0 0 000 0 0 0 0 (store from Rd, byte, We, add, write disable)
+# = 0x2C00
+2C00
 
 # Opcode 12: sw
-0000
+# Bits  E D C B A 9 8 7 6-4 3 2 1 0
+#     0b0 1 1 1 1 0 0 0 000 0 0 0 0 (store from Rd, word, We, add, write disable)
+# = 0x3C00
+3C00
 
 # Opcode 13: beq
-# Bits  A 9 8 7 6-4 3 2 1 0
-#     0b1 0 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
-# = 0x050C
-050C
+# Bits  E D C B A 9 8 7 6-4 3 2 1 0
+#     0b1 0 0 0 1 0 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
+# = 0x440C
+440C
 
 # Opcode 14: bne
-# Bits  A 9 8 7 6-4 3 2 1 0
-#     0b1 1 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
-# = 0x070C
-070C
+# Bits  E D C B A 9 8 7 6-4 3 2 1 0
+#     0b1 0 0 0 1 1 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
+# = 0x470C
+470C
 
 # Opcode 15: j
 # Bits  7 6-4 3 2 1 0

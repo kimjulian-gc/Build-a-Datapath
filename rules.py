@@ -127,3 +127,13 @@ def beq_instr(reg1, reg2, imm):
 @assembler.instruction('bne #, #, #', 1)
 def bne_instr(reg1, reg2, imm):
   return pips.iformat(opcode='bne', r0=reg1, r1=reg2, imm=imm)
+
+# Encode a lw instruction
+@assembler.instruction('lw #, #(#)', 1)
+def lw_instr(reg1, imm, reg2):
+  return pips.iformat(opcode='lw', r0=reg1, r1=reg2, imm=imm)
+
+# Encode a sw instruction
+@assembler.instruction('sw #, #(#)', 1)
+def sw_instr(reg1, imm, reg2):
+  return pips.iformat(opcode='sw', r0=reg1, r1=reg2, imm=imm)
