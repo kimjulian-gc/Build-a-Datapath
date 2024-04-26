@@ -110,8 +110,8 @@ v2.0 raw
 # Opcode 13: beq
 # Bits  E D C B A 9 8 7 6-4 3 2 1 0
 #     0b1 0 0 0 1 0 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
-# = 0x440C
-440C
+# = 0x450C
+450C
 
 # Opcode 14: bne
 # Bits  E D C B A 9 8 7 6-4 3 2 1 0
