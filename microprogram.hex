@@ -13,6 +13,9 @@ v2.0 raw
 # 3:  Carry in for the ALU
 # 4-6:  Operation for the ALU ()
 # 7:  Jump instruction indication
+# 8:  Branch instruction indication
+# 9:  Branch Invert Control
+# 10: Use r0 instead of r2 as the second register file 
 
 # Opcode 0: add
 # Bits  7 6-4 3 2 1 0
@@ -89,10 +92,16 @@ v2.0 raw
 0000
 
 # Opcode 13: beq
-0000
+# Bits  A 9 8 7 6-4 3 2 1 0
+#     0b1 0 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
+# = 0x050C
+050C
 
 # Opcode 14: bne
-0000
+# Bits  A 9 8 7 6-4 3 2 1 0
+#     0b1 1 1 0 000 1 1 0 0 (subtract, check if zero, disable write)
+# = 0x070C
+070C
 
 # Opcode 15: j
 # Bits  7 6-4 3 2 1 0

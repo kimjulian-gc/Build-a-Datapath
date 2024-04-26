@@ -117,3 +117,13 @@ def jal_instr(immediate):
 @assembler.instruction('jr #', 1)
 def jr_instr(dest):
   return pips.rformat(opcode='j', r0='$zero', r1='$zero', r2=dest)
+
+# Encode a beq instruction
+@assembler.instruction('beq #, #, #', 1)
+def beq_instr(reg1, reg2, imm):
+  return pips.iformat(opcode='beq', r0=reg1, r1=reg2, imm=imm)
+
+# Encode a bne instruction
+@assembler.instruction('bne #, #, #', 1)
+def bne_instr(reg1, reg2, imm):
+  return pips.iformat(opcode='bne', r0=reg1, r1=reg2, imm=imm)
