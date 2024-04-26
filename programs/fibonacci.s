@@ -8,13 +8,20 @@ main:
     # Initialize the stack
     li $sp, 0xf800
 
-    li   $a0, 15
+    li  $s0, 0
+    li  $s1, 15
 
-    jal  print_decimal_number
+    j   while_cond_main
+    while_main:
+        addi $a0, $s0, 0
+        jal fibonacci
 
-    li   $a0, 321
+        addi $a0, $v0, 0
+        jal  print_decimal_number
 
-    jal  print_decimal_number
+        addi $s0, $s0, 1
+        while_cond_main:
+            bne  $s0, $s1, while_main
 
     j    HALT
 
@@ -76,13 +83,15 @@ product:
 #  Prints the decimal number in $a0.
 print_decimal_number:
     # store return address and possible saved temporaries
-    addi $sp, $sp, -12
+    addi $sp, $sp, -16
     sw   $ra, 0($sp)
     sw   $s0, 4($sp)
     sw   $s1, 8($sp)
+    sw   $s2, 12($sp)
 
     # initialize reversed int n into s0
     li   $s0, 0
+    li   $s2, 0
     # store n into s1
     addi $s1, $a0, 0
     
@@ -105,10 +114,11 @@ print_decimal_number:
         jal  division
 
         addi $s1, $v0, 0
+        addi $s2, $s2, 1 # count number of digits
 
         while_cond_1:
             bne $s1, $zero, while_1
-        
+
     j   while_cond_2
     while_2:
         addi $a0, $s0, 0
@@ -124,9 +134,20 @@ print_decimal_number:
         jal  division
 
         addi $s0, $v0, 0
+        addi $s2, $s2, -1 # count remaining number of digits
 
         while_cond_2:
             bne $s0, $zero, while_2
+
+    # print remaining 0s
+    li   $t1, TERMINAL
+    li   $t0, 0x30
+    j   while_cond_3
+    while_3:
+        sb   $t0, 0($t1)
+        addi $s2, $s2, -1 # count remaining number of digits
+    while_cond_3:
+        bne $s2, $zero, while_3
 
     lw   $ra, 0($sp)
     lw   $s0, 4($sp)
@@ -141,3 +162,36 @@ print_decimal_number:
     jr   $ra
 # END print_decimal_number
 
+#   $a0:  n
+fibonacci:
+    addi $sp, $sp, -12
+    sw   $ra, 0($sp)
+    sw   $s0, 4($sp)
+    sw   $s1, 8($sp)
+
+    # base case
+    li  $t0, 2
+    slt $t1, $a0, $t0
+    beq $t1, $zero, recursive
+    li  $v0, 1
+    j   return_fib
+
+    # recursive case
+    recursive:
+    addi $s0, $a0, 0
+    addi $a0, $a0, -1
+    jal  fibonacci
+    addi $s1, $v0, 0
+
+    addi $a0, $s0, 0
+    addi $a0, $a0, -2
+    jal  fibonacci
+    add  $v0, $s1, $v0
+    
+    return_fib:
+    lw   $ra, 0($sp)
+    lw   $s0, 4($sp)
+    lw   $s1, 8($sp)
+    addi $sp, $sp, 12
+
+    jr $ra
