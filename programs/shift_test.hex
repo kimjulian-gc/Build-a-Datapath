@@ -1,0 +1,41 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+00010000 
+
+# 0x0004: li  $t0, 0x000F     # Load 0x000F (15) into $t0
+0601000f 
+
+# 0x0008: sll $s0, $t0, 4     # $s0 = 15 * 16 = 240 0x00F0
+0a006404 
+
+# 0x000c: li  $t0, 0x8000     # Load 0x1000 into $t0
+06018000 
+
+# 0x0010: sll $s1, $t0, 1     # $s1 = (overflow) 0x0000
+0b006401 
+
+# 0x0014: li  $t0, 0xF000     # Load 0xF000 into $t0
+0601f000 
+
+# 0x0018: srl $s2, $t0, 4     # $s2 = 0x0F00
+0c006804 
+
+# 0x001c: li  $t0, 0x000F     # Load 0x000F (15) into $t0
+0601000f 
+
+# 0x0020: srl $s3, $t0, 1     # $s3 = 15 / 2 = 7 = 0x0007
+0d006801 
+
+# 0x0024: li $t0, 0xF000      # Load 0xF000 into $t0
+0601f000 
+
+# 0x0028: sra $t1, $t0, 4     # $t1 = 0xFF00
+07006c04 
+
+# 0x002c: li  $t0, 0x000F     # Load 0x000F (15) into $t0
+0601000f 
+
+# 0x0030: sra $t2, $t0, 1     # $t2 = 15 / 2 = 7 = 0x0007
+08006c01 

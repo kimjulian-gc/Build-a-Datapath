@@ -147,3 +147,27 @@ def lb_instr(reg1, imm, reg2):
 @assembler.instruction('sb #, #(#)', 1)
 def sb_instr(reg1, imm, reg2):
   return pips.iformat(opcode='sb', r0=reg1, r1=reg2, imm=imm)
+
+# Encode a sll instruction
+@assembler.instruction('sll #, #, #', 1)
+def sll_instr(reg1, reg2, imm):
+  return pips.rformat(
+    opcode='add', r0=reg1, r1='$zero', r2=reg2,
+    shift_type=pips.SHIFT_LEFT, shift_amt=imm
+  )
+
+# Encode a srl instruction
+@assembler.instruction('srl #, #, #', 1)
+def srl_instr(reg1, reg2, imm):
+  return pips.rformat(
+    opcode='add', r0=reg1, r1='$zero', r2=reg2,
+    shift_type=pips.SHIFT_RIGHT_LOGICAL, shift_amt=imm
+  )
+
+# Encode a sra instruction
+@assembler.instruction('sra #, #, #', 1)
+def sra_instr(reg1, reg2, imm):
+  return pips.rformat(
+    opcode='add', r0=reg1, r1='$zero', r2=reg2,
+    shift_type=pips.SHIFT_RIGHT_ARITHMETIC, shift_amt=imm
+  )
