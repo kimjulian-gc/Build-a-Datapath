@@ -171,3 +171,12 @@ def sra_instr(reg1, reg2, imm):
     opcode='add', r0=reg1, r1='$zero', r2=reg2,
     shift_type=pips.SHIFT_RIGHT_ARITHMETIC, shift_amt=imm
   )
+
+@assembler.instruction('not #, #', 1)
+def not_instr(reg1, reg2):
+  # Notice, 
+  # A  |  NOT A  |  A NOR 0
+  # 0  |    1    |     1
+  # 1  |    0    |     0
+  # So, (NOT A) = (NOR A 0)
+  return pips.rformat(opcode='nor', r0=reg1, r1=reg2, r2='$zero')
