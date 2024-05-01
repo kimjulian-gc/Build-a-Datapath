@@ -20,7 +20,7 @@ f0010028
 02a10000 
 
 # 0x0018: jal fibonacci
-ff030160 
+ff030168 
 
 # 0x001c: addi $a0, $v0, 0
 02110000 
@@ -223,83 +223,86 @@ b6710000
 # 0x0134: bne $s2, $zero, while_3
 ec01012c 
 
-# 0x0138: pop $ra
-afe10000 0ee10002 
+# 0x0138: pop $s2
+ace10000 0ee10002 
 
-# 0x0140: pop $s0
-aae10000 0ee10002 
-
-# 0x0148: pop $s1
+# 0x0140: pop $s1
 abe10000 0ee10002 
 
-# 0x0150: li   $t0, 0x0a
+# 0x0148: pop $s0
+aae10000 0ee10002 
+
+# 0x0150: pop $ra
+afe10000 0ee10002 
+
+# 0x0158: li   $t0, 0x0a
 0601000a 
 
-# 0x0154: li   $t1, TERMINAL
+# 0x015c: li   $t1, TERMINAL
 0701ff10 
 
-# 0x0158: sb   $t0, 0($t1)
+# 0x0160: sb   $t0, 0($t1)
 b6710000 
 
-# 0x015c: jr   $ra
+# 0x0164: jr   $ra
 f000f000 
 
-# 0x0160: push $ra
+# 0x0168: push $ra
 0ee1fffe cfe10000 
 
-# 0x0168: push $s0
+# 0x0170: push $s0
 0ee1fffe cae10000 
 
-# 0x0170: push $s1
+# 0x0178: push $s1
 0ee1fffe cbe10000 
 
-# 0x0178: li  $t0, 2
+# 0x0180: li  $t0, 2
 06010002 
 
-# 0x017c: slt $t1, $a0, $t0
+# 0x0184: slt $t1, $a0, $t0
 77206000 
 
-# 0x0180: beq $t1, $zero, recursive
-d701018c 
+# 0x0188: beq $t1, $zero, recursive
+d7010194 
 
-# 0x0184: li  $v0, 1
+# 0x018c: li  $v0, 1
 01010001 
 
-# 0x0188: j   return_fib
-f00101ac 
+# 0x0190: j   return_fib
+f00101b4 
 
-# 0x018c: addi $s0, $a0, 0
+# 0x0194: addi $s0, $a0, 0
 0a210000 
 
-# 0x0190: addi $a0, $a0, -1
+# 0x0198: addi $a0, $a0, -1
 0221ffff 
 
-# 0x0194: jal  fibonacci
-ff030160 
+# 0x019c: jal  fibonacci
+ff030168 
 
-# 0x0198: addi $s1, $v0, 0
+# 0x01a0: addi $s1, $v0, 0
 0b110000 
 
-# 0x019c: addi $a0, $s0, 0
+# 0x01a4: addi $a0, $s0, 0
 02a10000 
 
-# 0x01a0: addi $a0, $a0, -2
+# 0x01a8: addi $a0, $a0, -2
 0221fffe 
 
-# 0x01a4: jal  fibonacci
-ff030160 
+# 0x01ac: jal  fibonacci
+ff030168 
 
-# 0x01a8: add  $v0, $s1, $v0
+# 0x01b0: add  $v0, $s1, $v0
 01b01000 
 
-# 0x01ac: pop $ra
-afe10000 0ee10002 
-
-# 0x01b4: pop $s0
-aae10000 0ee10002 
-
-# 0x01bc: pop $s1
+# 0x01b4: pop $s1
 abe10000 0ee10002 
 
-# 0x01c4: jr $ra
+# 0x01bc: pop $s0
+aae10000 0ee10002 
+
+# 0x01c4: pop $ra
+afe10000 0ee10002 
+
+# 0x01cc: jr $ra
 f000f000 
