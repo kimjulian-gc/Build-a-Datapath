@@ -180,3 +180,11 @@ def not_instr(reg1, reg2):
   # 1  |    0    |     0
   # So, (NOT A) = (NOR A 0)
   return pips.rformat(opcode='nor', r0=reg1, r1=reg2, r2='$zero')
+
+@assembler.instruction('push #', 2)
+def push_instr(reg):
+  return addi_instr('$sp', '$sp', '-2') + sw_instr(reg, '0', '$sp')
+
+@assembler.instruction('pop #', 2)
+def pop_instr(reg):
+  return lw_instr(reg, '0', '$sp') + addi_instr('$sp', '$sp', '2')

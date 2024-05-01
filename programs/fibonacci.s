@@ -83,11 +83,16 @@ product:
 #  Prints the decimal number in $a0.
 print_decimal_number:
     # store return address and possible saved temporaries
-    addi $sp, $sp, -16
-    sw   $ra, 0($sp)
-    sw   $s0, 4($sp)
-    sw   $s1, 8($sp)
-    sw   $s2, 12($sp)
+    # addi $sp, $sp, -16
+    # sw   $ra, 0($sp)
+    # sw   $s0, 4($sp)
+    # sw   $s1, 8($sp)
+    # sw   $s2, 12($sp)
+
+    push $ra
+    push $s0
+    push $s1
+    push $s2
 
     # initialize reversed int n into s0
     li   $s0, 0
@@ -149,10 +154,14 @@ print_decimal_number:
     while_cond_3:
         bne $s2, $zero, while_3
 
-    lw   $ra, 0($sp)
-    lw   $s0, 4($sp)
-    lw   $s1, 8($sp)
-    addi $sp, $sp, 12
+    # lw   $ra, 0($sp)
+    # lw   $s0, 4($sp)
+    # lw   $s1, 8($sp)
+    # addi $sp, $sp, 12
+
+    pop $ra
+    pop $s0
+    pop $s1
 
     li   $t0, 0x0a
     li   $t1, TERMINAL
@@ -164,10 +173,14 @@ print_decimal_number:
 
 #   $a0:  n
 fibonacci:
-    addi $sp, $sp, -12
-    sw   $ra, 0($sp)
-    sw   $s0, 4($sp)
-    sw   $s1, 8($sp)
+    # addi $sp, $sp, -12
+    # sw   $ra, 0($sp)
+    # sw   $s0, 4($sp)
+    # sw   $s1, 8($sp)
+
+    push $ra
+    push $s0
+    push $s1
 
     # base case
     li  $t0, 2
@@ -189,9 +202,13 @@ fibonacci:
     add  $v0, $s1, $v0
     
     return_fib:
-    lw   $ra, 0($sp)
-    lw   $s0, 4($sp)
-    lw   $s1, 8($sp)
-    addi $sp, $sp, 12
+    # lw   $ra, 0($sp)
+    # lw   $s0, 4($sp)
+    # lw   $s1, 8($sp)
+    # addi $sp, $sp, 12
+
+    pop $ra
+    pop $s0
+    pop $s1
 
     jr $ra
