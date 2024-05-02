@@ -188,3 +188,36 @@ def push_instr(reg):
 @assembler.instruction('pop #', 2)
 def pop_instr(reg):
   return lw_instr(reg, '0', '$sp') + addi_instr('$sp', '$sp', '2')
+
+@assembler.instruction('blt! #, #, #', 2)
+# if reg_mut < reg_comp (1 ne 0), then jump.
+def bltmut_instr(reg_mut, reg_comp, dest):
+  # no zero register as reg_mut
+  if (reg_mut == '$zero'):
+      raise ValueError('The $zero register cannot be the first argument to blt!, because it is read-only.')
+  return slt_instr(reg_mut, reg_mut, reg_comp) + bne_instr(reg_mut, '$zero', dest)
+
+@assembler.instruction('ble! #, #, #', 2)
+# if not reg_comp < reg_mut (0 eq 0), then reg_comp >= reg_mut.
+# thus, reg_mut <= reg_comp.
+def blemut_instr(reg_mut, reg_comp, dest):
+  # no zero register as reg_mut
+  if (reg_mut == '$zero'):
+      raise ValueError('The $zero register cannot be the first argument to ble!, because it is read-only.')
+  return slt_instr(reg_mut, reg_comp, reg_mut) + beq_instr(reg_mut, '$zero', dest)
+
+@assembler.instruction('bgt! #, #, #', 2)
+# if reg_comp < reg_mut (1 ne 0), then reg_mut > reg_comp.
+def bgtmut_instr(reg_mut, reg_comp, dest):
+  # no zero register as reg_mut
+  if (reg_mut == '$zero'):
+      raise ValueError('The $zero register cannot be the first argument to bgt!, because it is read-only.')
+  return slt_instr(reg_mut, reg_comp, reg_mut) + bne_instr(reg_mut, '$zero', dest)
+
+@assembler.instruction('bge! #, #, #', 2)
+# if not reg_mut < reg_comp (0 eq 0), then reg_mut >= reg_comp.
+def bgemut_instr(reg_mut, reg_comp, dest):
+  # no zero register as reg_mut
+  if (reg_mut == '$zero'):
+      raise ValueError('The $zero register cannot be the first argument to bge!, because it is read-only.')
+  return slt_instr(reg_mut, reg_mut, reg_comp) + beq_instr(reg_mut, '$zero', dest)

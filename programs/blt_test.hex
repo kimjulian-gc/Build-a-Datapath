@@ -1,0 +1,40 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: li $t0, 2
+06010002 
+
+# 0x0004: li $t1, 5
+07010005 
+
+# 0x0008: blt! $t0, $t1, jump_here
+76607000 e6010018 
+
+# 0x0010: li $s0, 666
+0a01029a 
+
+# 0x0014: j halt
+f0010040 
+
+# 0x0018: li $s0, 4
+0a010004 
+
+# 0x001c: li $t0, 3
+06010003 
+
+# 0x0020: li $t1, 2
+07010002 
+
+# 0x0024: blt! $t0, $t1, dont_jump_here
+76607000 e6010034 
+
+# 0x002c: li $s1, 4
+0b010004 
+
+# 0x0030: j halt
+f0010040 
+
+# 0x0034: li $s1, 666
+0b01029a 
+
+# 0x0038: bge! $zero, $zero, broke
