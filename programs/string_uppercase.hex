@@ -1,0 +1,59 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+00010000 
+
+# 0x0004: li   $sp, STACK_TOP  # Initialize stack pointer
+0e01f800 
+
+# 0x0008: li   $s0, TERM       # Address of the terminal output
+0a01ff10 
+
+# 0x000c: li   $s1, KBD        # Address of the keyboard input
+0b01ff20 
+
+# 0x0010: lb $t0, 0($s1)          # Load a character from the keyboard
+96b10000 
+
+# 0x0014: beq $t0, $zero, read_loop  # If it is the null terminator, start over
+d6010010 
+
+# 0x0018: li $t1, 'a'           # Load the ASCII value for 'a'
+07010061 
+
+# 0x001c: li $t2, 'z'           # Load the ASCII value for 'z'
+0801007a 
+
+# 0x0020: slt $t3, $t0, $t1     # Set $t3 to 1 if $t0 < 'a'
+79607000 
+
+# 0x0024: slt $a0, $t2, $t0     # Set $a0 to 1 if 'z' < $t0
+72806000 
+
+# 0x0028: or $a1, $t3, $a0      # Set $a1 to 1 if either $t3 or $a0 is 1 (i.e., $t0 is outside 'a'-'z')
+33902000 
+
+# 0x002c: beq $a1, $zero, convert_to_upper  # If $a1 is 0, then it is a lowercase letter
+d3010040 
+
+# 0x0030: sb $t0, 0($s0)        # Write the character to the terminal
+b6a10000 
+
+# 0x0034: li $t1, '\n'          # Load a newline constant
+0701000a 
+
+# 0x0038: beq $t0, $t1, end     # If the character was the newline, stop looping
+d6710048 
+
+# 0x003c: j read_loop           # Read the next character
+f0010010 
+
+# 0x0040: subi $t0, $t0, 32     # Convert lowercase to uppercase by subtracting 32 from ASCII value
+16610020 
+
+# 0x0044: j write_char          # Write the converted character and continue
+f0010030 
+
+# 0x0048: j HALT                # Enable halt pin and stop the PC incrementing
+f001ff00 
