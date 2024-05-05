@@ -1,0 +1,326 @@
+v2.0 raw
+# This is an automatically-generated PIPS machine code file
+
+# 0x0000: nop
+00010000 
+
+# 0x0004: li $sp, STACK_TOP     # Set stack pointer
+0e01f800 
+
+# 0x0008: li $s0, TERM          # Terminal address
+0a01ff10 
+
+# 0x000c: li $s1, KBD           # Keyboard input address
+0b01ff20 
+
+# 0x0010: li $v0, 0            # Clear sum register
+01010000 
+
+# 0x0014: li $t0, 0            # Temporary register for current digit
+06010000 
+
+# 0x0018: lb $t0, 0($s1)       # Load byte from keyboard
+96b10000 
+
+# 0x001c: li $t1, '\n'
+0701000a 
+
+# 0x0020: beq $t1, $t0, exit   # If '\n' is entered without full command, user wants to exit.
+d7610090 
+
+# 0x0024: subi $t0, $t0, '0'   # Convert from ASCII to integer
+16610030 
+
+# 0x0028: slti $t1, $t0, 0     # Check if less than 0
+77610000 
+
+# 0x002c: bne $t1, $zero, input_loop_first_digit  # Loop if not a valid digit
+e7010010 
+
+# 0x0030: slti $t1, $t0, 10    # Check if less than 10
+7761000a 
+
+# 0x0034: beq $t1, $zero, input_loop_first_digit  # Loop if not a valid digit
+d7010010 
+
+# 0x0038: add $v0, $v0, $t0    # Store first digit in $v0
+01106000 
+
+# 0x003c: lb $t0, 0($s1)       # Load byte (should be '+')
+96b10000 
+
+# 0x0040: li $t1, '\n'
+0701000a 
+
+# 0x0044: beq $t1, $t0, exit   # If '\n' is entered without full command, user wants to exit.
+d7610090 
+
+# 0x0048: li $t1, '+'
+0701002b 
+
+# 0x004c: bne $t0, $t1, input_loop_operator  # Ensure it is '+'
+e671003c 
+
+# 0x0050: lb $t0, 0($s1)       # Load byte from keyboard
+96b10000 
+
+# 0x0054: li $t1, '\n'
+0701000a 
+
+# 0x0058: beq $t1, $t0, exit   # If '\n' is entered without full command, user wants to exit.
+d7610090 
+
+# 0x005c: subi $t0, $t0, '0'   # Convert from ASCII to integer
+16610030 
+
+# 0x0060: slti $t1, $t0, 0     # Check if less than 0
+77610000 
+
+# 0x0064: bne $t1, $zero, input_loop_second_digit  # Loop if not a valid digit
+e7010050 
+
+# 0x0068: slti $t1, $t0, 10    # Check if less than 10
+7761000a 
+
+# 0x006c: beq $t1, $zero, input_loop_second_digit  # Loop if not a valid digit
+d7010050 
+
+# 0x0070: add $v0, $v0, $t0    # Add second digit to $v0
+01106000 
+
+# 0x0074: lb $t0, 0($s1)       # Load byte (should be '\n')
+96b10000 
+
+# 0x0078: li $t1, '\n'
+0701000a 
+
+# 0x007c: bne $t0, $t1, input_loop_newline_digit  # Ensure it is '\n'
+e6710074 
+
+# 0x0080: j compute_and_display
+f0010084 
+
+# 0x0084: addi $a0, $v0, 0     # Move sum to $a0 for printing
+02110000 
+
+# 0x0088: jal print_decimal_number  # Print the result
+ff0300e8 
+
+# 0x008c: j input_loop_first_digit  # Loop back for new input
+f0010010 
+
+# 0x0090: j HALT               # Halt the machine
+f001ff00 
+
+# 0x0094: slt $t0, $a0, $a1
+76203000 
+
+# 0x0098: bne $t0, $zero, skip_loop
+e60100a8 
+
+# 0x009c: sub $a0, $a0, $a1
+12203000 
+
+# 0x00a0: slt $t0, $a0, $a1
+76203000 
+
+# 0x00a4: beq $t0, $zero, while_loop # if (not a < b), continue looping
+d601009c 
+
+# 0x00a8: addi $v0, $a0, 0    # solution is in $a0, copy to $v0
+01210000 
+
+# 0x00ac: jr $ra       # Return to caller
+f000f000 
+
+# 0x00b0: li $t0, 0
+06010000 
+
+# 0x00b4: slt $t1, $a0, $a1
+77203000 
+
+# 0x00b8: bne $t1, $zero, div_done
+e70100c8 
+
+# 0x00bc: sub $a0, $a0, $a1
+12203000 
+
+# 0x00c0: addi $t0, $t0, 1
+06610001 
+
+# 0x00c4: j div_loop
+f00100b4 
+
+# 0x00c8: addi $v0, $t0, 0
+01610000 
+
+# 0x00cc: jr $ra # Return quotient
+f000f000 
+
+# 0x00d0: li $v0, 0      # Clear return register to use in code
+01010000 
+
+# 0x00d4: beq $a1, $zero, end_while
+d30100e4 
+
+# 0x00d8: add $v0, $v0, $a0
+01102000 
+
+# 0x00dc: addi $a1, $a1, -1
+0331ffff 
+
+# 0x00e0: j while
+f00100d4 
+
+# 0x00e4: jr $ra      # Return to caller
+f000f000 
+
+# 0x00e8: addi $sp, $sp, -16
+0ee1fff0 
+
+# 0x00ec: sw $ra, 0($sp)
+cfe10000 
+
+# 0x00f0: sw $s0, 4($sp)
+cae10004 
+
+# 0x00f4: sw $s1, 8($sp)
+cbe10008 
+
+# 0x00f8: sw $s2, 12($sp)
+cce1000c 
+
+# 0x00fc: li $s0, 0
+0a010000 
+
+# 0x0100: li $s2, 0
+0c010000 
+
+# 0x0104: addi $s1, $a0, 0
+0b210000 
+
+# 0x0108: j while_cond_1
+f0010140 
+
+# 0x010c: addi $a0, $s0, 0
+02a10000 
+
+# 0x0110: li $a1, 10
+0301000a 
+
+# 0x0114: jal product
+ff0300d0 
+
+# 0x0118: addi $s0, $v0, 0
+0a110000 
+
+# 0x011c: addi $a0, $s1, 0
+02b10000 
+
+# 0x0120: li $a1, 10
+0301000a 
+
+# 0x0124: jal remainder
+ff030094 
+
+# 0x0128: add $s0, $s0, $v0
+0aa01000 
+
+# 0x012c: addi $a0, $s1, 0
+02b10000 
+
+# 0x0130: li $a1, 10
+0301000a 
+
+# 0x0134: jal division
+ff0300b0 
+
+# 0x0138: addi $s1, $v0, 0
+0b110000 
+
+# 0x013c: addi $s2, $s2, 1 # count number of digits
+0cc10001 
+
+# 0x0140: bne $s1, $zero, while_1
+eb01010c 
+
+# 0x0144: j while_cond_2
+f0010174 
+
+# 0x0148: addi $a0, $s0, 0
+02a10000 
+
+# 0x014c: li $a1, 10
+0301000a 
+
+# 0x0150: jal remainder
+ff030094 
+
+# 0x0154: addi $t0, $v0, 0x30
+06110030 
+
+# 0x0158: li $t1, TERM
+0701ff10 
+
+# 0x015c: sb $t0, 0($t1)
+b6710000 
+
+# 0x0160: addi $a0, $s0, 0
+02a10000 
+
+# 0x0164: li $a1, 10
+0301000a 
+
+# 0x0168: jal division
+ff0300b0 
+
+# 0x016c: addi $s0, $v0, 0
+0a110000 
+
+# 0x0170: addi $s2, $s2, -1 # count remaining number of digits
+0cc1ffff 
+
+# 0x0174: bne $s0, $zero, while_2
+ea010148 
+
+# 0x0178: li $t1, TERM
+0701ff10 
+
+# 0x017c: li $t0, 0x30
+06010030 
+
+# 0x0180: j while_cond_3
+f001018c 
+
+# 0x0184: sb $t0, 0($t1)
+b6710000 
+
+# 0x0188: addi $s2, $s2, -1 # count remaining number of digits
+0cc1ffff 
+
+# 0x018c: bne $s2, $zero, while_3
+ec010184 
+
+# 0x0190: lw $ra, 0($sp)
+afe10000 
+
+# 0x0194: lw $s0, 4($sp)
+aae10004 
+
+# 0x0198: lw $s1, 8($sp)
+abe10008 
+
+# 0x019c: addi $sp, $sp, 12
+0ee1000c 
+
+# 0x01a0: li $t0, 0x0a
+0601000a 
+
+# 0x01a4: li $t1, TERM
+0701ff10 
+
+# 0x01a8: sb $t0, 0($t1)
+b6710000 
+
+# 0x01ac: jr $ra
+f000f000 
